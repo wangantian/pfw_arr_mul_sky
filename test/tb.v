@@ -28,9 +28,10 @@ module tb ();
 `endif
   // Replace tt_um_example with your module name:
   tt_um_array_mult_vga user_project (
-  `ifdef GL_TEST
-  wire VPWR = 1'b1;
-  wire VGND = 1'b0;
+      // Include power ports for the Gate Level test:
+`ifdef GL_TEST
+      .VPWR(VPWR),
+      .VGND(VGND),
 `endif
       .ui_in  (ui_in),    // Dedicated inputs
       .uo_out (uo_out),   // Dedicated outputs
